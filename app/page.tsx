@@ -1,3 +1,4 @@
+import Footer from "@/components/footer/Footer";
 import About from "@/components/home/about/About";
 import AboutCompany from "@/components/home/about/AboutCompany";
 import ApproachSection from "@/components/home/ApproachSection";
@@ -20,7 +21,8 @@ const page = () => {
       <ServicesSection />
       <ApproachSection />
       <ServicesGrid />
-      <TestimonialsScroll/>
+      <TestimonialsScroll />
+      <Footer />
     </main>
   );
 };
