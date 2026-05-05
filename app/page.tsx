@@ -1,5 +1,6 @@
 import About from "@/components/home/about/About";
 import AboutCompany from "@/components/home/about/AboutCompany";
+import ApproachSection from "@/components/home/ApproachSection";
 import ChallengesSection from "@/components/home/ChallengesSection";
 import Hero from "@/components/home/hero/Hero";
 import ServicesSection from "@/components/home/ServicesSection";
@@ -15,6 +16,7 @@ const page = () => {
       <AboutCompany />
       <ChallengesSection />
       <ServicesSection />
+      <ApproachSection />
     </main>
   );
 };
