@@ -5,6 +5,7 @@ import ChallengesSection from "@/components/home/ChallengesSection";
 import Hero from "@/components/home/hero/Hero";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import ServicesSection from "@/components/home/ServicesSection";
+import TestimonialsScroll from "@/components/home/TestimonialsScroll";
 import Navbar from "@/components/navbar/Navbar";
 import React from "react";
 
@@ -19,6 +20,7 @@ const page = () => {
       <ServicesSection />
       <ApproachSection />
       <ServicesGrid />
+      <TestimonialsScroll/>
     </main>
   );
 };
