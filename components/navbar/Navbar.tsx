@@ -18,11 +18,21 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="w-full fixed top-0 left-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-      {/* Container */}
-      <div className="w-full px-4 sm:px-6 lg:px-12 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
+    <div className="absolute top-6 left-0 w-full flex justify-center z-50 px-4">
+      {/* Floating Container */}
+      <div
+        className="
+        w-full max-w-[1100px]
+        bg-white/95
+        backdrop-blur-md
+        border border-gray-200
+        shadow-lg
+        rounded-xl
+      "
+      >
+        {/* Inner Navbar */}
+        <div className="px-6 py-4 flex items-center justify-between">
+          {/* Logo */}
           <Image
             src="/images/logo.png"
             alt="PixelByte"
@@ -30,50 +40,50 @@ export default function Navbar() {
             height={40}
             priority
           />
-        </div>
 
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center gap-10 text-[15px] font-medium">
-          {navItems.map((item, index) => (
-            <Link
-              key={index}
-              href={item.href}
-              className={`transition ${
-                item.name === "Home"
-                  ? "text-[#c9a55c]"
-                  : "text-gray-800 hover:text-[#c9a55c]"
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button className="md:hidden" onClick={() => setOpen(!open)}>
-          {open ? <X size={26} /> : <Menu size={26} />}
-        </button>
-      </div>
-
-      {/* Mobile Dropdown */}
-      {open && (
-        <div className="md:hidden w-full bg-white border-t border-gray-200 px-6 py-6 shadow-md">
-          <div className="flex flex-col gap-5 text-center">
+          {/* Desktop Menu */}
+          <nav className="hidden md:flex items-center gap-10 text-[15px] font-medium">
             {navItems.map((item, index) => (
               <Link
                 key={index}
                 href={item.href}
-                onClick={() => setOpen(false)}
-                className={`text-[16px] font-medium ${
-                  item.name === "Home" ? "text-[#c9a55c]" : "text-gray-800"
+                className={`transition ${
+                  item.name === "Home"
+                    ? "text-[#c9a55c]"
+                    : "text-gray-800 hover:text-[#c9a55c]"
                 }`}
               >
                 {item.name}
               </Link>
             ))}
-          </div>
+          </nav>
+
+          {/* Mobile Toggle */}
+          <button className="md:hidden" onClick={() => setOpen(!open)}>
+            {open ? <X size={26} /> : <Menu size={26} />}
+          </button>
         </div>
-      )}
-    </header>
+
+        {/* Mobile Dropdown */}
+        {open && (
+          <div className="md:hidden border-t border-gray-200 px-6 py-6 bg-white rounded-b-xl">
+            <div className="flex flex-col gap-5 text-center">
+              {navItems.map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className={`text-[16px] font-medium ${
+                    item.name === "Home" ? "text-[#c9a55c]" : "text-gray-800"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
