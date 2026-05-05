@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   const navItems = [
@@ -24,17 +25,28 @@ export default function Navbar() {
     return pathname.startsWith(href);
   };
 
+  // Detect scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="absolute top-6 left-0 w-full flex justify-center z-50 px-4">
+    <div
+      className={`fixed top-0 left-0 w-full flex justify-center z-50 px-4 transition-all duration-300 ${
+        scrolled ? "py-3" : "py-6"
+      }`}
+    >
       <div
-        className="
-        w-full max-w-[1100px]
-        bg-white/95
-        backdrop-blur-md
-        border border-gray-200
-        shadow-lg
-        rounded-xl
-      "
+        className={`w-full max-w-[1100px] rounded-xl transition-all duration-300 ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-md shadow-xl border border-gray-200"
+            : "bg-white/70 backdrop-blur-sm"
+        }`}
       >
         {/* Inner Navbar */}
         <div className="px-6 py-4 flex items-center justify-between">
