@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Container from "../ui/Container";
+import Container from "../../ui/Container";
 import { motion, cubicBezier } from "framer-motion";
-import AnimatedText from "../ui/AnimatedText";
+import AnimatedText from "../../ui/AnimatedText";
 
 const container = {
   hidden: {},

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Container from "../ui/Container";
+import Container from "../../ui/Container";
 import { motion } from "framer-motion";
 
 export default function AboutCompany() {

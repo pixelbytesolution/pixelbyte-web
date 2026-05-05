@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Container from "../ui/Container";
+import Container from "../../ui/Container";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
