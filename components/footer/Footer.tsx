@@ -7,50 +7,55 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer
-      className="w-full text-white pt-16 md:pt-20 pb-10"
-      style={{
-        background: "linear-gradient(180deg, #071A2F 0%, #04101F 100%)",
-      }}
-    >
-      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent mb-10" />
-
+    <footer className="w-full bg-[#F4EFE6] text-[#0A1F3C] pt-16 md:pt-20 pb-10">
       <Container>
+        {/* CTA */}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+          <h2 className="text-2xl md:text-4xl font-semibold text-[#0A1F3C]">
+            Ready to Transform Your Business?
+          </h2>
+
+          <button
+            className="px-6 py-3 rounded-full border border-[#0A1F3C] text-[#0A1F3C] 
+            hover:bg-[#0A1F3C] hover:text-white transition-all duration-300"
+          >
+            Get Started →
+          </button>
+        </div>
+
+        {/* Divider */}
+        <div className="w-full h-px bg-[#0A1F3C]/20 mb-10" />
+
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
           {/* Brand */}
           <div>
             <h3 className="text-2xl font-semibold mb-4">PIXELBYTE</h3>
-            <p className="text-white/70 text-sm leading-relaxed mb-6">
-              Empowering businesses with innovative IT solutions.
+            <p className="text-[#0A1F3C]/70 text-sm leading-relaxed mb-6">
+              Empowering businesses with innovative IT solutions, scalable
+              infrastructure, and digital transformation strategies.
             </p>
 
             {/* Social Icons */}
             <div className="flex gap-3">
-              {[
-                { icon: FaFacebookF },
-                { icon: FaTwitter },
-                { icon: FaLinkedinIn },
-              ].map((item, i) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center 
-                    hover:bg-white hover:text-[#04101F] transition-all duration-300 cursor-pointer"
-                  >
-                    <Icon size={16} />
-                  </div>
-                );
-              })}
+              {[FaFacebookF, FaTwitter, FaLinkedinIn].map((Icon, i) => (
+                <div
+                  key={i}
+                  className="w-10 h-10 rounded-full bg-[#0A1F3C]/10 flex items-center justify-center 
+                  hover:bg-[#0A1F3C] hover:text-white transition-all duration-300 cursor-pointer"
+                >
+                  <Icon size={16} />
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Company */}
           <div>
-            <h4 className="text-sm font-semibold mb-4 text-white/90">
+            <h4 className="text-sm font-semibold mb-4 text-[#0A1F3C]/90">
               Company
             </h4>
-            <ul className="space-y-3 text-sm text-white/70">
+            <ul className="space-y-3 text-sm text-[#0A1F3C]/70">
               <li>
                 <Link href="#">About Us</Link>
               </li>
@@ -68,10 +73,10 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-sm font-semibold mb-4 text-white/90">
+            <h4 className="text-sm font-semibold mb-4 text-[#0A1F3C]/90">
               Services
             </h4>
-            <ul className="space-y-3 text-sm text-white/70">
+            <ul className="space-y-3 text-sm text-[#0A1F3C]/70">
               <li>
                 <Link href="#">Web Development</Link>
               </li>
@@ -89,10 +94,10 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold mb-4 text-white/90">
+            <h4 className="text-sm font-semibold mb-4 text-[#0A1F3C]/90">
               Contact
             </h4>
-            <ul className="space-y-4 text-sm text-white/70">
+            <ul className="space-y-4 text-sm text-[#0A1F3C]/70">
               <li className="flex items-start gap-3">
                 <MapPin size={18} />
                 <span>
@@ -115,10 +120,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="w-full h-px bg-white/10 mb-6" />
-
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
+        {/* Bottom */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[#0A1F3C]/60">
           <p>© {new Date().getFullYear()} Pixelbyte. All rights reserved.</p>
+
           <div className="flex gap-6">
             <Link href="#">Privacy Policy</Link>
             <Link href="#">Terms of Service</Link>
