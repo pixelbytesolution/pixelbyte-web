@@ -3,6 +3,7 @@ import AboutCompany from "@/components/home/about/AboutCompany";
 import ApproachSection from "@/components/home/ApproachSection";
 import ChallengesSection from "@/components/home/ChallengesSection";
 import Hero from "@/components/home/hero/Hero";
+import ServicesGrid from "@/components/home/ServicesGrid";
 import ServicesSection from "@/components/home/ServicesSection";
 import Navbar from "@/components/navbar/Navbar";
 import React from "react";
@@ -17,6 +18,7 @@ const page = () => {
       <ChallengesSection />
       <ServicesSection />
       <ApproachSection />
+      <ServicesGrid />
     </main>
   );
 };
