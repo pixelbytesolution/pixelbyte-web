@@ -1,6 +1,7 @@
-import About from "@/components/about/About";
-import AboutCompany from "@/components/about/AboutCompany";
-import Hero from "@/components/hero/Hero";
+import About from "@/components/home/about/About";
+import AboutCompany from "@/components/home/about/AboutCompany";
+import ChallengesSection from "@/components/home/ChallengesSection";
+import Hero from "@/components/home/hero/Hero";
 import Navbar from "@/components/navbar/Navbar";
 import React from "react";
 
@@ -11,6 +12,7 @@ const page = () => {
       <Hero />
       <About />
       <AboutCompany />
+      <ChallengesSection />
     </main>
   );
 };
