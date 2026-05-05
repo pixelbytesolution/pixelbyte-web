@@ -4,6 +4,7 @@ import Container from "../ui/Container";
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { InteractiveHoverButton } from "../ui/interactive-hover-button";
 
 export default function Footer() {
   return (
@@ -15,12 +16,7 @@ export default function Footer() {
             Ready to Transform Your Business?
           </h2>
 
-          <button
-            className="px-6 py-3 rounded-full border border-[#0A1F3C] text-[#0A1F3C] 
-            hover:bg-[#0A1F3C] hover:text-white transition-all duration-300"
-          >
-            Get Started →
-          </button>
+          <InteractiveHoverButton> Get Started </InteractiveHoverButton>
         </div>
 
         {/* Divider */}
