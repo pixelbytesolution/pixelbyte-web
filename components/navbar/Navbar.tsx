@@ -12,27 +12,28 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
-    { name: "Works", href: "/works" },
+    { name: "Our Works", href: "/works" },
     { name: "Careers", href: "/careers" },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact Us", href: "/contact" },
   ];
 
   return (
-    <div className="w-full flex justify-center absolute top-6 z-50 px-4">
-      <div className="w-full max-w-[1000px] bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-md px-6 py-3 flex items-center justify-between">
+    <header className="w-full fixed top-0 left-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+      {/* Container */}
+      <div className="w-full px-4 sm:px-6 lg:px-12 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <Image
             src="/images/logo.png"
             alt="PixelByte"
-            width={140}
+            width={160}
             height={40}
             priority
           />
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8 text-[15px] font-medium">
+        <nav className="hidden md:flex items-center gap-10 text-[15px] font-medium">
           {navItems.map((item, index) => (
             <Link
               key={index}
@@ -46,18 +47,18 @@ export default function Navbar() {
               {item.name}
             </Link>
           ))}
-        </div>
+        </nav>
 
-        {/* Mobile Toggle */}
+        {/* Mobile Menu Button */}
         <button className="md:hidden" onClick={() => setOpen(!open)}>
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown */}
       {open && (
-        <div className="absolute top-[90px] w-full max-w-[1000px] bg-white rounded-xl shadow-lg border border-gray-200 p-6 md:hidden">
-          <div className="flex flex-col gap-4 text-center">
+        <div className="md:hidden w-full bg-white border-t border-gray-200 px-6 py-6 shadow-md">
+          <div className="flex flex-col gap-5 text-center">
             {navItems.map((item, index) => (
               <Link
                 key={index}
@@ -73,6 +74,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }
