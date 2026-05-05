@@ -4,9 +4,11 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -17,9 +19,13 @@ export default function Navbar() {
     { name: "Contact Us", href: "/contact" },
   ];
 
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
+
   return (
     <div className="absolute top-6 left-0 w-full flex justify-center z-50 px-4">
-      {/* Floating Container */}
       <div
         className="
         w-full max-w-[1100px]
@@ -48,7 +54,7 @@ export default function Navbar() {
                 key={index}
                 href={item.href}
                 className={`transition ${
-                  item.name === "Home"
+                  isActive(item.href)
                     ? "text-[#c9a55c]"
                     : "text-gray-800 hover:text-[#c9a55c]"
                 }`}
@@ -74,7 +80,7 @@ export default function Navbar() {
                   href={item.href}
                   onClick={() => setOpen(false)}
                   className={`text-[16px] font-medium ${
-                    item.name === "Home" ? "text-[#c9a55c]" : "text-gray-800"
+                    isActive(item.href) ? "text-[#c9a55c]" : "text-gray-800"
                   }`}
                 >
                   {item.name}
