@@ -2,53 +2,122 @@
 
 import Container from "../ui/Container";
 import ServiceCard from "./ServiceCard";
+import { motion } from "framer-motion";
 
 const services = [
   {
+    number: "01",
     title: "Web Development",
     description:
-      "Modern, scalable web applications built with cutting-edge technologies.",
+      "Modern, scalable, and high-performance web applications tailored for startups and enterprises.",
   },
   {
-    title: "Mobile App Development",
-    description: "High-performance mobile apps for Android and iOS platforms.",
-  },
-  {
+    number: "02",
     title: "UI/UX Design",
     description:
-      "Beautiful, intuitive designs focused on user experience and conversion.",
+      "Creating premium digital experiences with user-focused design systems and interfaces.",
   },
   {
-    title: "Cloud Solutions",
+    number: "03",
+    title: "Mobile Applications",
     description:
-      "Secure and scalable cloud infrastructure tailored for your needs.",
+      "Cross-platform mobile apps optimized for performance, engagement, and scalability.",
   },
   {
-    title: "Digital Marketing",
+    number: "04",
+    title: "Cloud Infrastructure",
     description:
-      "Strategies to grow your brand and reach the right audience effectively.",
+      "Secure cloud architecture, DevOps workflows, deployment pipelines, and monitoring.",
   },
   {
+    number: "05",
+    title: "Brand Strategy",
+    description:
+      "Helping brands position themselves through strategy, visuals, and digital transformation.",
+  },
+  {
+    number: "06",
     title: "Custom Software",
     description:
-      "Tailored solutions designed specifically for your business workflows.",
+      "Tailor-made business solutions built around your workflows and operational goals.",
   },
 ];
 
 export default function ServicesGrid() {
   return (
-    <section className="py-20 bg-[white]">
-      <Container>
+    <section className="relative py-24 bg-[#f8fafc] overflow-hidden">
+      {/* Background Glow */}
+      <div
+        className="
+        absolute top-0 left-1/2 -translate-x-1/2
+        w-[700px] h-[700px]
+        bg-blue-500/10 blur-[140px]
+        rounded-full
+      "
+      />
+
+      <Container className="relative z-10">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center max-w-3xl mx-auto"
+        >
+          <span
+            className="
+            inline-block
+            px-4 py-2
+            rounded-full
+            bg-blue-100
+            text-blue-600
+            text-sm font-medium
+          "
+          >
+            OUR SERVICES
+          </span>
+
+          <h2
+            className="
+            mt-6
+            text-3xl sm:text-4xl md:text-5xl
+            font-bold
+            text-gray-900
+            leading-tight
+          "
+          >
+            Premium Digital Solutions
+            <br />
+            For Modern Businesses
+          </h2>
+
+          <p
+            className="
+            mt-6
+            text-gray-600
+            text-sm sm:text-base
+            leading-relaxed
+          "
+          >
+            We help companies build exceptional digital experiences through
+            strategy, development, and innovative technologies.
+          </p>
+        </motion.div>
+
+        {/* Cards */}
         <div
           className="
-          grid gap-6
+          mt-20
+          grid gap-8
           sm:grid-cols-2
-          lg:grid-cols-3
+          xl:grid-cols-3
         "
         >
           {services.map((service, index) => (
             <ServiceCard
               key={index}
+              number={service.number}
               title={service.title}
               description={service.description}
             />
