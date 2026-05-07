@@ -3,6 +3,7 @@ import About from "@/components/home/about/About";
 import AboutCompany from "@/components/home/about/AboutCompany";
 import ApproachSection from "@/components/home/ApproachSection";
 import ChallengesSection from "@/components/home/ChallengesSection";
+import FAQSection from "@/components/home/FAQSection";
 import Hero from "@/components/home/hero/Hero";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import ServicesSection from "@/components/home/ServicesSection";
@@ -22,6 +23,7 @@ const page = () => {
       <ApproachSection />
       <ServicesGrid />
       <TestimonialsScroll />
+      <FAQSection />
       <Footer />
     </main>
   );
