@@ -1,171 +1,233 @@
 "use client";
 
 import Container from "@/components/ui/Container";
-import { motion } from "framer-motion";
+import Link from "next/link";
+import { motion, cubicBezier } from "framer-motion";
 import AboutCompany from "../home/about/AboutCompany";
+
+const easeCustom = cubicBezier(0.42, 0, 0.58, 1);
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: easeCustom },
+  },
+};
+
+const cardStagger = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.12 },
+  },
+};
 
 export default function AboutPage() {
   return (
-    <main className="w-full bg-white overflow-hidden">
-      {/* HERO */}
-      <section className="w-full py-20 md:py-28 bg-[#F4EFE6]">
+    <main className="w-full bg-black text-white overflow-hidden">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative w-full py-28 md:py-40 bg-gradient-to-b from-black via-[#040d1a] to-black border-b border-white/5">
+        {/* Subtle Ambient Light Glows */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+
         <Container>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={fadeInUp}
             className="max-w-4xl"
           >
-            <h1 className="text-4xl md:text-6xl font-semibold text-[#0A1F3C] mb-6 leading-tight">
-              We Build Technology <br /> That Drives Growth
+            {/* Tagline */}
+            <div className="flex items-center gap-2 mb-6">
+              <span className="h-px w-8 bg-cyan-400" />
+              <p className="text-cyan-300 text-xs md:text-sm font-semibold tracking-widest uppercase">
+                About Pixelbyte Solutions
+              </p>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] mb-8 bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent">
+              Engineering Smarter <br /> Digital Infrastructure
             </h1>
 
-            <p className="text-lg md:text-xl text-[#4a4a4a] leading-relaxed">
-              At PIXELBYTE, we combine innovation, strategy, and engineering to
-              deliver scalable IT solutions that empower businesses to grow,
-              adapt, and lead in a digital-first world.
+            <p className="text-base md:text-lg text-white/70 font-light leading-relaxed max-w-3xl">
+              Based in the tech ecosystem of Kozhikode, Pixelbyte Solutions delivers 
+              high-performance digital engineering. We transform manual bottlenecks 
+              into autonomous workflows and elevate regional brands into global digital leaders.
             </p>
           </motion.div>
         </Container>
       </section>
 
+      {/* 2. THE COMPONENT INJECTION */}
       <AboutCompany />
 
-      {/* STORY */}
-      <section className="w-full py-20 md:py-28 bg-white">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* LEFT */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0A1F3C] mb-6">
-                Our Story
-              </h2>
-
-              <p className="text-[#4a4a4a] text-lg leading-relaxed mb-6">
-                PIXELBYTE was founded with a vision to bridge the gap between
-                technology and business success. From startups to enterprises,
-                we’ve helped organizations transform their infrastructure,
-                enhance security, and unlock new growth opportunities.
-              </p>
-
-              <p className="text-[#4a4a4a] text-lg leading-relaxed">
-                With a strong focus on innovation and performance, our team
-                delivers solutions that are not only reliable but future-ready.
-              </p>
-            </motion.div>
-
-            {/* RIGHT */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              className="bg-[#0A2547] rounded-3xl p-10 text-white"
-            >
-              <h3 className="text-xl font-semibold mb-4">
-                Why Choose PIXELBYTE?
-              </h3>
-
-              <ul className="space-y-3 text-white/80 text-sm md:text-base">
-                <li>✔ 13+ Years of Industry Expertise</li>
-                <li>✔ 500+ Successful IT Projects</li>
-                <li>✔ 100+ Enterprise Clients</li>
-                <li>✔ 99% Client Satisfaction Rate</li>
-              </ul>
-            </motion.div>
-          </div>
-        </Container>
-      </section>
-
-      {/* VALUES SECTION */}
-      <section className="w-full py-20 md:py-28 bg-[#F4EFE6]">
+      {/* 3. CAPABILITIES / CORE SERVICES MATRIX */}
+      <section className="w-full py-24 md:py-32 bg-black relative border-b border-white/5">
         <Container>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-center mb-16"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-semibold text-[#0A1F3C] mb-4">
-              Our Core Values
+            <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-4">
+              Our Core Architecture
             </h2>
-            <p className="text-[#4a4a4a] max-w-2xl mx-auto">
-              We believe in building long-term relationships through innovation,
-              transparency, and excellence.
+            <p className="text-white/60 font-light max-w-xl">
+              Engineered for absolute performance, stability, and growth.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div 
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={cardStagger}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {[
               {
-                title: "Innovation",
-                desc: "We continuously explore new technologies to deliver cutting-edge solutions.",
+                num: "01",
+                title: "Static Websites",
+                desc: "Blazing fast, secure, and optimized Jamstack deployments custom-tuned for exceptional SEO performance.",
               },
               {
-                title: "Integrity",
-                desc: "We operate with transparency and honesty in every engagement.",
+                num: "02",
+                title: "Workflow Automation",
+                desc: "Eliminating human overhead by bridging legacy business systems together through smart API-driven automations.",
               },
               {
-                title: "Excellence",
-                desc: "We strive to exceed expectations and deliver measurable impact.",
+                num: "03",
+                title: "Web Applications",
+                desc: "Highly-scalable, reactive browser experiences built with modern enterprise frameworks for seamless use.",
               },
-            ].map((item, i) => (
+              {
+                num: "04",
+                title: "Custom Software",
+                desc: "Tailored backend architectures designed explicitly around your local workflows and operational pain points.",
+              },
+            ].map((service, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white p-8 rounded-2xl border border-[#0A1F3C]/10"
+                variants={fadeInUp}
+                whileHover={{ y: -8, borderColor: "rgba(34, 211, 238, 0.3)" }}
+                className="bg-[#081B34]/20 border border-white/10 rounded-2xl p-8 transition-colors duration-300 flex flex-col justify-between group"
               >
-                <h3 className="text-lg font-semibold text-[#0A1F3C] mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-[#4a4a4a]">{item.desc}</p>
+                <div>
+                  <div className="text-xs font-mono tracking-widest text-cyan-400 font-bold mb-6 group-hover:text-cyan-300">
+                    {"// SERVICE_"}
+                    {service.num}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-white/60 font-light leading-relaxed">
+                    {service.desc}
+                  </p>
+                </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </Container>
       </section>
 
-      {/* PROCESS SECTION */}
-      <section className="w-full py-20 md:py-28 bg-white">
+      {/* 4. CHRONOLOGICAL OPERATION METRICS */}
+      <section className="w-full py-24 md:py-32 bg-gradient-to-b from-black via-[#030b14] to-black">
         <Container>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-semibold text-[#0A1F3C] mb-4">
-              Our Approach
-            </h2>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              className="lg:col-span-5"
+            >
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+                Our Mission From Kozhikode
+              </h2>
+              <p className="text-white/70 font-light text-base md:text-lg leading-relaxed mb-6">
+                We believe that premium engineering shouldn&apos;t be gated behind multinational 
+                consulting fees. Pixelbyte Solutions operates locally to deliver enterprise-grade 
+                technical infrastructure to expanding businesses.
+              </p>
+              <p className="text-white/60 font-light text-sm md:text-base leading-relaxed">
+                By designing clean software models, we provide business owners with complete operational visibility, lowering runtime overhead and increasing total throughput.
+              </p>
+            </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            {["Analyze", "Design", "Build", "Support"].map((step, i) => (
-              <div key={i}>
-                <div className="text-4xl font-bold text-[#0A2547] mb-3">
-                  0{i + 1}
-                </div>
-                <p className="text-[#4a4a4a]">{step}</p>
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              className="lg:col-span-7 bg-gradient-to-br from-[#081B34]/60 to-[#0A2547]/30 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden backdrop-blur-sm shadow-2xl"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+              
+              <h3 className="text-xl font-semibold mb-8 text-cyan-300 tracking-wide uppercase text-xs">
+                Performance Benchmarks
+              </h3>
+
+              <div className="grid grid-cols-2 gap-x-8 gap-y-10">
+                {[
+                  { value: "99.9%", label: "System Uptime" },
+                  { value: "4.2x", label: "Workflow Velocity" },
+                  { value: "100%", label: "Tailored Execution" },
+                  { value: "SEO 100", label: "Web Optimization" },
+                ].map((stat, i) => (
+                  <div key={i} className="border-l-2 border-cyan-500/30 pl-4">
+                    <div className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-1">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs md:text-sm text-white/50 tracking-wider font-light uppercase">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </motion.div>
+
           </div>
         </Container>
       </section>
 
-      {/* CTA */}
-      <section className="w-full py-20 md:py-28 bg-[#081B34]">
+      {/* 5. METRIC CTA */}
+      <section className="w-full py-24 bg-black relative border-t border-white/5">
         <Container>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <h2 className="text-2xl md:text-4xl text-white font-semibold">
-              Ready to Transform Your Business?
-            </h2>
+          <div className="relative bg-gradient-to-r from-[#081B34] to-black border border-white/10 rounded-3xl p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(47,164,255,0.15),transparent_50%)]" />
+            
+            <div className="relative z-10 max-w-xl">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                Ready to automate and optimize?
+              </h2>
+              <p className="text-white/60 font-light text-sm md:text-base">
+                Let&apos;s plan out your architecture. Connect with our technical team in Kozhikode to schedule an engineering review.
+              </p>
+            </div>
 
-            <button className="px-8 py-3 rounded-full border border-white text-white hover:bg-white hover:text-[#081B34] transition">
-              Get Started →
-            </button>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative z-10"
+            >
+              <Link
+                href="/contact"
+                className="block whitespace-nowrap px-8 py-4 rounded-xl font-semibold text-sm bg-gradient-to-r from-[#2FA4FF] to-[#5B8CFF] text-white shadow-xl hover:shadow-blue-500/20 transition-all duration-300"
+              >
+                Initiate Discovery →
+              </Link>
+            </motion.div>
           </div>
         </Container>
       </section>
+
     </main>
   );
 }
