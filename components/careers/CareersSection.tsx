@@ -1,413 +1,334 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Link from "next/link";
+import { motion, cubicBezier } from "framer-motion";
 import Container from "../ui/Container";
 import { ArrowUpRight, Briefcase, Clock3, MapPin } from "lucide-react";
 
+const easeCustom = cubicBezier(0.42, 0, 0.58, 1);
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: easeCustom },
+  },
+};
+
+const cardStagger = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
 const jobs = [
   {
-    title: "Frontend Developer",
+    title: "Frontend Engineer",
     type: "Full Time",
-    location: "Remote",
+    location: "Kozhikode / Remote",
     description:
-      "Build modern, scalable, and high-performance user interfaces using the latest frontend technologies.",
+      "Architect responsive, modular user interfaces with exceptional performance metrics utilizing modern client-side production stacks.",
   },
   {
-    title: "Backend Developer",
+    title: "Backend Engineer",
     type: "Full Time",
-    location: "Hybrid",
+    location: "Kozhikode / Hybrid",
     description:
-      "Develop secure APIs, scalable architectures, and optimized backend systems for modern applications.",
+      "Design secure core database schemas, structure reliable API routing layers, and configure highly scalable operational servers.",
   },
   {
-    title: "UI/UX Designer",
+    title: "UI/UX Systems Designer",
     type: "Contract",
     location: "Remote",
     description:
-      "Design premium digital experiences with a strong focus on usability and modern interface systems.",
+      "Craft premium layout prototypes, interactive wireframes, and unified multi-platform user experiences for modern products.",
   },
   {
-    title: "Project Manager",
+    title: "Technical Project Manager",
     type: "Full Time",
-    location: "On Site",
+    location: "On Site (Kozhikode)",
     description:
-      "Coordinate teams, manage workflows, and ensure timely delivery of high-quality digital solutions.",
+      "Coordinate active development sprints, smooth over cross-team friction, and guarantee structured delivery of client milestones.",
   },
 ];
 
-export default function CareersPage() {
+export default function CareersSection() {
   return (
-    <main className="bg-[#F4EFE6] overflow-hidden">
-      {/* HERO */}
-      <section className="relative pt-36 pb-28 overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-[#061F3E]" />
+    <main className="w-full bg-[#F4EFE6] text-[#0A1F3C] overflow-hidden">
+      
+      {/* 1. HERO SECTION (High-Contrast Premium Dark Blue Canvas) */}
+      <section className="relative pt-40 pb-28 overflow-hidden bg-black text-white border-b border-[#0A1F3C]/10">
+        {/* Ambient Cosmic Radial Glows */}
+        <div className="absolute top-[-100px] left-1/4 w-[600px] h-[600px] bg-blue-500/10 blur-[130px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
 
-        {/* Gold Glow */}
-        <div
-          className="
-            absolute
-            top-[-180px]
-            left-1/2
-            -translate-x-1/2
-            w-[750px]
-            h-[750px]
-            bg-[#C8A96A]/20
-            blur-[160px]
-            rounded-full
-          "
-        />
-
-        {/* Grid Pattern */}
+        {/* Digital Line Overlay */}
         <div
           className="
             absolute inset-0
-            opacity-[0.05]
+            opacity-[0.03]
             [background-image:linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]
-            [background-size:60px_60px]
+            [background-size:50px_50px]
+            pointer-events-none
           "
         />
 
         <Container className="relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Badge */}
+            {/* Tagline Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="
                 inline-flex
                 items-center
                 gap-2
-                px-5 py-2.5
+                px-4 py-2
                 rounded-full
-                bg-white/10
+                bg-white/5
                 border border-white/10
                 backdrop-blur-md
-                text-sm
-                font-medium
-                text-[#C8A96A]
+                text-xs sm:text-sm
+                font-semibold
+                tracking-widest
+                text-cyan-300
+                uppercase
               "
             >
-              ✦ Join PixelByte Solutions
+              ✦ Engineering Core Expansion
             </motion.div>
 
-            {/* Heading */}
+            {/* Main Header */}
             <motion.h1
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+              transition={{ duration: 0.8, ease: easeCustom }}
               className="
                 mt-8
                 text-4xl
                 sm:text-5xl
                 md:text-6xl
                 lg:text-7xl
-                font-extrabold
-                leading-[1.05]
-                tracking-tight
-                text-white
+                font-bold
+                leading-[1.1]
+                tracking-tighter
               "
             >
-              Build The Future
-              <span className="block text-[#C8A96A]">With PixelByte</span>
+              Build the Next Era of
+              <span className="block mt-2 bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent">
+                Digital Infrastructure
+              </span>
             </motion.h1>
 
-            {/* Description */}
+            {/* Sub description */}
             <motion.p
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.2,
-                duration: 0.7,
-              }}
+              transition={{ delay: 0.2, duration: 0.7 }}
               className="
                 mt-8
                 max-w-2xl
                 mx-auto
                 text-sm
                 sm:text-base
-                md:text-lg
                 leading-relaxed
                 text-white/70
+                font-light
               "
             >
-              We’re building innovative digital experiences for ambitious brands
-              worldwide. Join our passionate team and help shape the next
-              generation of technology solutions.
+              We&apos;re assembling a team of passionate developers and creators to architect automated, 
+              scalable solutions out of Kozhikode. Join us in shaping modern business tools.
             </motion.p>
 
-            {/* CTA */}
+            {/* Action Trigger */}
             <motion.div
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.35,
-                duration: 0.7,
-              }}
+              transition={{ delay: 0.35, duration: 0.7 }}
               className="mt-10"
             >
-              <button
+              <Link
+                href="#open-positions"
                 className="
                   px-8 py-4
-                  rounded-2xl
-                  bg-[#C8A96A]
-                  text-[#061F3E]
+                  rounded-xl
+                  bg-gradient-to-r
+                  from-[#2FA4FF]
+                  to-[#5B8CFF]
+                  text-white
+                  text-sm
                   font-semibold
-                  shadow-xl
+                  shadow-lg shadow-blue-500/20
                   hover:scale-[1.03]
-                  hover:bg-[#d4b57b]
                   transition-all duration-300
                 "
               >
                 Explore Open Positions
-              </button>
+              </Link>
             </motion.div>
           </div>
         </Container>
       </section>
 
-      {/* WHY JOIN */}
-      <section className="py-24">
+      {/* 2. WHY JOIN CULTURE (Beige Canvas mixed with Deep Blue Cards) */}
+      <section id="open-positions" className="py-28 bg-[#F4EFE6] border-b border-[#0A1F3C]/10">
         <Container>
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
-            {/* LEFT */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Left Content Column */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
+              variants={fadeInUp}
             >
-              <span className="text-[#C8A96A] font-semibold text-sm tracking-wide">
-                WHY JOIN US
-              </span>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="h-px w-6 bg-[#2FA4FF]" />
+                <span className="text-[#2FA4FF] font-semibold text-xs tracking-widest uppercase">
+                  Ecosystem Benefits
+                </span>
+              </div>
 
-              <h2
-                className="
-                  mt-4
-                  text-3xl
-                  sm:text-4xl
-                  md:text-5xl
-                  font-bold
-                  leading-tight
-                  text-[#111827]
-                "
-              >
-                Work With Passionate
-                <br />
-                Innovators & Creators
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight text-[#0A1F3C]">
+                Work Alongside Team <br />
+                Innovators & Architects
               </h2>
 
-              <p
-                className="
-                  mt-6
-                  text-[#111827]/70
-                  leading-relaxed
-                  text-sm
-                  sm:text-base
-                "
-              >
-                At PixelByte Solutions, we foster a collaborative environment
-                focused on innovation, growth, and meaningful impact. We value
-                creativity, ownership, and continuous learning.
+              <p className="mt-6 text-[#0A1F3C]/70 font-light text-sm sm:text-base leading-relaxed">
+                At Pixelbyte Solutions, we cut out micromanagement and foster local tech development. 
+                We give engineers complete ownership to deploy scalable software parameters while supporting active workspace learning.
               </p>
             </motion.div>
 
-            {/* RIGHT */}
+            {/* Right Matrix Cards Grid */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="
-                grid
-                sm:grid-cols-2
-                gap-6
-              "
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={cardStagger}
+              className="grid sm:grid-cols-2 gap-6"
             >
               {[
-                "Flexible Work Environment",
-                "Career Growth Opportunities",
-                "Modern Technologies",
-                "Creative Team Culture",
+                "Autonomous Workspace Models",
+                "Linear Skill Advancements",
+                "Production-Grade Tooling",
+                "Collaborative Team Mindsets",
               ].map((item, index) => (
-                <div
+                <motion.div
                   key={index}
+                  variants={fadeInUp}
+                  whileHover={{ y: -6, borderColor: "rgba(47, 164, 255, 0.4)" }}
                   className="
-                    rounded-3xl
-                    bg-white
-                    border border-[#C8A96A]/20
+                    rounded-2xl
+                    bg-[#081B34]
+                    border border-[#0A1F3C]/10
                     p-8
-                    shadow-sm
-                    hover:shadow-xl
-                    hover:-translate-y-2
+                    text-white
+                    shadow-md
                     transition-all duration-300
                   "
                 >
-                  <div
-                    className="
-                      w-12 h-12
-                      rounded-2xl
-                      bg-[#C8A96A]/10
-                      flex items-center justify-center
-                      text-[#C8A96A]
-                    "
-                  >
-                    <Briefcase size={22} />
+                  <div className="w-10 h-10 rounded-xl bg-cyan-400/10 flex items-center justify-center text-cyan-300">
+                    <Briefcase size={18} />
                   </div>
 
-                  <h3 className="mt-5 font-semibold text-lg text-[#111827]">
+                  <h3 className="mt-5 font-bold text-lg text-white tracking-tight">
                     {item}
                   </h3>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </div>
         </Container>
       </section>
 
-      {/* JOB LISTINGS */}
-      <section className="pb-24">
+      {/* 3. OPPORTUNITIES TRACKS (Clean Beige Canvas mixed with High Contrast Blue/Cyan accents) */}
+      <section className="py-28 bg-[#F4EFE6] border-b border-[#0A1F3C]/10">
         <Container>
-          {/* Heading */}
-          <div className="max-w-2xl">
-            <span className="text-[#C8A96A] font-semibold text-sm tracking-wide">
-              OPEN POSITIONS
-            </span>
+          {/* Section Indicator */}
+          <div className="max-w-2xl mb-14">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="h-px w-6 bg-[#2FA4FF]" />
+              <span className="text-[#2FA4FF] font-semibold text-xs tracking-widest uppercase">
+                Active Pipelines
+              </span>
+            </div>
 
-            <h2
-              className="
-          mt-4
-          text-3xl
-          sm:text-4xl
-          md:text-5xl
-          font-bold
-          text-[#111827]
-          leading-tight
-        "
-            >
-              Current Opportunities
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#0A1F3C]">
+              Current Openings
             </h2>
 
-            <p
-              className="
-          mt-5
-          text-[#111827]/70
-          text-sm
-          sm:text-base
-          leading-relaxed
-          max-w-2xl
-        "
-            >
-              Join our growing team of creators, developers, designers, and
-              innovators building modern digital solutions for businesses around
-              the world.
+            <p className="mt-4 text-[#0A1F3C]/70 font-light text-sm sm:text-base leading-relaxed">
+              Find your path inside our engineering teams. We review candidate application protocols with speed and clarity.
             </p>
           </div>
 
-          {/* Jobs */}
-          <div className="mt-14 space-y-6">
+          {/* Job Postings Mapping Stack */}
+          <div className="space-y-4">
             {jobs.map((job, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.08,
-                }}
-                whileHover={{ y: -4 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                whileHover={{ y: -4, borderColor: "rgba(10, 31, 60, 0.2)" }}
                 className="
-            group
-            bg-white
-            border border-[#C8A96A]/15
-            rounded-3xl
-            p-8
-            shadow-sm
-            hover:shadow-2xl
-            transition-all duration-300
-          "
-              >
-                <div
-                  className="
-              flex
-              flex-col
-              lg:flex-row
-              lg:items-center
-              lg:justify-between
-              gap-8
-            "
-                >
-                  {/* LEFT */}
-                  <div>
-                    <h3
-                      className="
-                  text-2xl
-                  font-bold
-                  text-[#111827]
+                  bg-white
+                  border border-[#0A1F3C]/10
+                  rounded-2xl
+                  p-8
+                  shadow-sm hover:shadow-md
+                  transition-all duration-300
                 "
-                    >
+              >
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+                  {/* Info details left block */}
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-bold text-[#0A1F3C] tracking-tight">
                       {job.title}
                     </h3>
 
-                    <p
-                      className="
-                  mt-4
-                  text-[#111827]/70
-                  leading-relaxed
-                  max-w-2xl
-                  text-sm
-                  sm:text-base
-                "
-                    >
+                    <p className="text-[#0A1F3C]/70 font-light leading-relaxed max-w-2xl text-sm sm:text-base">
                       {job.description}
                     </p>
 
-                    {/* Meta */}
-                    <div
-                      className="
-                  mt-5
-                  flex
-                  flex-wrap
-                  items-center
-                  gap-5
-                  text-sm
-                  text-[#111827]/60
-                "
-                    >
-                      <div className="flex items-center gap-2">
-                        <Clock3 size={16} />
+                    {/* Metadata chips row */}
+                    <div className="flex flex-wrap items-center gap-4 text-xs font-mono tracking-wider text-[#2FA4FF] uppercase">
+                      <div className="flex items-center gap-2 bg-[#0A1F3C]/5 px-3 py-1.5 rounded-md border border-[#0A1F3C]/5 text-[#0A1F3C]/80">
+                        <Clock3 size={14} className="text-[#2FA4FF]" />
                         {job.type}
                       </div>
 
-                      <div className="flex items-center gap-2">
-                        <MapPin size={16} />
+                      <div className="flex items-center gap-2 bg-[#0A1F3C]/5 px-3 py-1.5 rounded-md border border-[#0A1F3C]/5 text-[#0A1F3C]/80">
+                        <MapPin size={14} className="text-[#2FA4FF]" />
                         {job.location}
                       </div>
                     </div>
                   </div>
 
-                  {/* RIGHT */}
-                  <button
+                  {/* Operational Action CTA button right */}
+                  <Link
+                    href={`mailto:pixelbytesolutions.in@gmail.com?subject=Application%20for%20${encodeURIComponent(job.title)}`}
                     className="
-                flex items-center gap-2
-                px-6 py-3
-                rounded-2xl
-                bg-[#061F3E]
-                text-white
-                font-medium
-                hover:bg-[#0B2C56]
-                transition-all duration-300
-                w-fit
-              "
+                      flex items-center gap-2
+                      px-6 py-3.5
+                      rounded-xl
+                      bg-[#0A1F3C]
+                      text-white
+                      text-sm
+                      font-semibold
+                      hover:bg-[#2FA4FF]
+                      transition-all duration-300
+                      w-fit shrink-0
+                    "
                   >
                     Apply Now
-                    <ArrowUpRight size={18} />
-                  </button>
+                    <ArrowUpRight size={16} />
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -415,191 +336,104 @@ export default function CareersPage() {
         </Container>
       </section>
 
-      {/* NEW WHITE SECTION */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        {/* Glow */}
-        <div
-          className="
-      absolute
-      top-0
-      right-0
-      w-[400px]
-      h-[400px]
-      bg-[#C8A96A]/10
-      blur-[120px]
-      rounded-full
-    "
-        />
+      {/* 4. WORK CULTURE METRIC SLATE (Flipped: Deep Blue Canvas with Beige Accent Cards) */}
+      <section className="py-28 bg-[#051329] text-white relative">
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none" />
 
-        <Container className="relative z-10">
-          <div
-            className="
-        grid
-        lg:grid-cols-2
-        gap-16
-        items-center
-      "
-          >
-            {/* LEFT CONTENT */}
+        <Container>
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            
+            {/* Left Context Statement */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
+              variants={fadeInUp}
+              className="lg:col-span-5"
             >
-              <span className="text-[#C8A96A] font-semibold text-sm tracking-wide">
-                LIFE AT PIXELBYTE
-              </span>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="h-px w-6 bg-cyan-400" />
+                <span className="text-cyan-400 font-semibold text-xs tracking-widest uppercase">
+                  Operation Standards
+                </span>
+              </div>
 
-              <h2
-                className="
-            mt-4
-            text-3xl
-            sm:text-4xl
-            md:text-5xl
-            font-bold
-            text-[#111827]
-            leading-tight
-          "
-              >
-                A Culture Built Around
-                <br />
-                Innovation & Growth
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
+                Life Within <br /> Our Architecture
               </h2>
 
-              <p
-                className="
-            mt-6
-            text-[#111827]/70
-            text-sm
-            sm:text-base
-            leading-relaxed
-          "
-              >
-                We believe great products are built by passionate people. At
-                PixelByte Solutions, we create an environment where creativity,
-                collaboration, and continuous learning thrive.
+              <p className="mt-6 text-white/70 font-light text-sm sm:text-base leading-relaxed">
+                Great systems demand pristine engineering focus. We prioritize deep work parameters and construct platforms that enhance collaborative communication pipelines.
               </p>
 
-              {/* Features */}
-              <div className="mt-10 space-y-5">
+              {/* Functional bullets column layout */}
+              <div className="mt-10 space-y-4 font-light text-sm text-white/80">
                 {[
-                  "Collaborative and creative work culture",
-                  "Flexible and remote-friendly environment",
-                  "Continuous learning and mentorship",
-                  "Opportunities to work on modern technologies",
+                  "Component-driven clean architecture paradigms",
+                  "Flexible operational structure frameworks",
+                  "Peer code auditing and direct skill reviews",
+                  "Direct deployment involvement across stacks",
                 ].map((item, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{
-                      delay: index * 0.08,
-                    }}
-                    className="flex items-start gap-4"
+                    transition={{ delay: index * 0.08 }}
+                    className="flex items-center gap-3"
                   >
-                    <div
-                      className="
-                  mt-1
-                  w-3 h-3
-                  rounded-full
-                  bg-[#C8A96A]
-                  flex-shrink-0
-                "
-                    />
-
-                    <p className="text-[#111827]/80 text-sm sm:text-base">
-                      {item}
-                    </p>
+                    <div className="w-2 h-2 rounded-full bg-cyan-400 shrink-0" />
+                    <p>{item}</p>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
 
-            {/* RIGHT CARDS */}
+            {/* Right Cards Stack Layout */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="
-          grid
-          sm:grid-cols-2
-          gap-6
-        "
+              variants={fadeInUp}
+              className="lg:col-span-7 grid sm:grid-cols-2 gap-6"
             >
               {[
-                {
-                  number: "01",
-                  title: "Creative Team",
-                },
-                {
-                  number: "02",
-                  title: "Flexible Work",
-                },
-                {
-                  number: "03",
-                  title: "Growth Focused",
-                },
-                {
-                  number: "04",
-                  title: "Modern Stack",
-                },
+                { number: "01", title: "Creative Focus" },
+                { number: "02", title: "Flexible Runtime" },
+                { number: "03", title: "Velocity Driven" },
+                { number: "04", title: "Modern Repos" },
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{
-                    y: -8,
-                  }}
+                  whileHover={{ y: -6, backgroundColor: "#ffffff", color: "#0A1F3C" }}
                   className="
-              bg-[#FBF0E3]
-              border border-[#C8A96A]/20
-              rounded-3xl
-              p-8
-              shadow-sm
-              hover:shadow-xl
-              transition-all duration-300
-            "
+                    bg-[#081B34]
+                    border border-white/5
+                    rounded-2xl
+                    p-8
+                    transition-all duration-300
+                  "
                 >
-                  <span
-                    className="
-                text-[#C8A96A]
-                text-sm
-                font-semibold
-              "
-                  >
+                  <span className="text-xs font-mono tracking-widest text-cyan-400 font-bold">
+                    {"// CORE_"}
                     {item.number}
                   </span>
 
-                  <h3
-                    className="
-                mt-4
-                text-2xl
-                font-bold
-                text-[#111827]
-              "
-                  >
+                  <h3 className="mt-4 text-xl font-bold text-white tracking-tight">
                     {item.title}
                   </h3>
 
-                  <p
-                    className="
-                mt-4
-                text-[#111827]/70
-                text-sm
-                leading-relaxed
-              "
-                  >
-                    Building an environment where innovation and collaboration
-                    help teams grow together.
+                  <p className="mt-3 text-white/60 font-light text-sm leading-relaxed">
+                    Structuring clear collaborative methods so our product loops execute smoothly.
                   </p>
                 </motion.div>
               ))}
             </motion.div>
+
           </div>
         </Container>
       </section>
+
     </main>
   );
 }
