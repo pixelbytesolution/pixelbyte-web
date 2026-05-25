@@ -4,14 +4,13 @@ import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import { ArrowUpRight, Mail, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
 export default function ContactSection() {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     setLoading(true);
 
     setTimeout(() => {
@@ -21,86 +20,57 @@ export default function ContactSection() {
   };
 
   return (
-    <main className="bg-[#FBF0E3] overflow-hidden">
-      {/* HERO */}
-      <section className="relative py-24 sm:py-28 lg:py-32 overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-[#061F3E]" />
+    <main className="w-full bg-black text-white overflow-hidden">
+      
+      {/* MAIN CONTAINER SECTION */}
+      <section className="relative py-24 sm:py-28 lg:py-32 overflow-hidden bg-gradient-to-b from-black via-[#040d1a] to-black">
+        {/* Dynamic Inner Radial Blue Glows */}
+        <div className="absolute top-[-100px] left-[-50px] w-[600px] h-[600px] bg-blue-500/10 blur-[130px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-[-150px] right-[-50px] w-[500px] h-[500px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
 
-        {/* Glow Left */}
-        <div
-          className="
-            absolute
-            top-[-180px]
-            left-[-100px]
-            w-[500px]
-            h-[500px]
-            bg-[#C8A96A]/20
-            blur-[140px]
-            rounded-full
-          "
-        />
-
-        {/* Glow Right */}
-        <div
-          className="
-            absolute
-            bottom-[-220px]
-            right-[-120px]
-            w-[500px]
-            h-[500px]
-            bg-[#C8A96A]/10
-            blur-[160px]
-            rounded-full
-          "
-        />
-
-        {/* Grid */}
+        {/* Digital Line Grid Pattern */}
         <div
           className="
             absolute inset-0
-            opacity-[0.04]
+            opacity-[0.03]
             [background-image:linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]
-            [background-size:60px_60px]
+            [background-size:50px_50px]
+            pointer-events-none
           "
         />
 
         <Container className="relative z-10">
-          <div
-            className="
-              grid
-              lg:grid-cols-[1fr_520px]
-              gap-16
-              items-center
-            "
-          >
-            {/* LEFT SIDE */}
+          <div className="grid lg:grid-cols-[1fr_520px] gap-16 items-center">
+            
+            {/* LEFT SIDE CONTENT BLOCK */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              {/* Badge */}
+              {/* Premium Mixed Badge */}
               <div
                 className="
                   inline-flex
                   items-center
                   gap-2
-                  px-5 py-2.5
+                  px-4 py-2
                   rounded-full
                   border border-white/10
                   bg-white/5
                   backdrop-blur-md
-                  text-sm
-                  font-medium
-                  text-[#C8A96A]
+                  text-xs sm:text-sm
+                  font-semibold
+                  tracking-widest
+                  text-cyan-300
+                  uppercase
                 "
               >
                 ✦ Contact PixelByte Solutions
               </div>
 
-              {/* Heading */}
+              {/* Header Grid */}
               <h1
                 className="
                   mt-8
@@ -108,125 +78,149 @@ export default function ContactSection() {
                   sm:text-6xl
                   lg:text-7xl
                   font-bold
-                  leading-[0.95]
-                  tracking-tight
+                  leading-[1.1]
+                  tracking-tighter
                   text-white
                 "
               >
-                Let’s Build
-                <span className="block text-[#C8A96A]">Something Great</span>
+                Let’s Build <br />
+                <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent">
+                  Something Great
+                </span>
               </h1>
 
-              {/* Description */}
-              <p
-                className="
-                  mt-8
-                  max-w-xl
-                  text-base
-                  sm:text-lg
-                  leading-relaxed
-                  text-white/70
-                "
-              >
-                Whether you're launching a startup, scaling a platform, or
-                modernizing your business — PixelByte Solutions helps turn
-                ambitious ideas into powerful digital products.
+              {/* Subdescription text parameters */}
+              <p className="mt-8 max-w-xl text-sm sm:text-base font-light leading-relaxed text-white/70">
+                Whether you&apos;re launching a startup, scaling an automation layer, or modernizing your data systems — PixelByte Solutions turns business operational goals into high-performance digital architecture.
               </p>
 
-              {/* Contact Cards */}
+              {/* Core Information Info Cards (Deep Blue Blocks) */}
               <div className="mt-12 grid sm:grid-cols-3 gap-4">
                 {[
                   {
-                    icon: <Phone size={18} />,
+                    icon: <Phone size={16} />,
                     title: "Phone",
                     value: "+91 98765 43210",
+                    link: "tel:+919876543210",
                   },
                   {
-                    icon: <Mail size={18} />,
+                    icon: <Mail size={16} />,
                     title: "Email",
-                    value: "pixelbytesolution.in@gmail.com",
+                    value: "pixelbytesolutions.in@gmail.com",
+                    link: "mailto:pixelbytesolutions.in@gmail.com",
                   },
                   {
-                    icon: <MapPin size={18} />,
+                    icon: <MapPin size={16} />,
                     title: "Location",
-                    value: "Calicut, Kerala",
+                    value: "HiLITE Business Park, Kozhikode, Kerala",
+                    link: "https://share.google/WwODL6tEinUmWUo9w"
                   },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{
-                      y: -8,
-                    }}
-                    className="
-                      rounded-3xl
-                      border border-white/10
-                      bg-white/5
-                      backdrop-blur-xl
-                      p-5
-                    "
-                  >
-                    <div
+                ].map((item, index) => {
+                  return item.link ? (
+                    <motion.a
+	                      key={index}
+	                      href={item.link}
+	                      target={item.link.startsWith("http") ? "_blank" : undefined}
+	                      rel={item.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                      whileHover={{ y: -6, borderColor: "rgba(34, 211, 238, 0.3)" }}
                       className="
-                        w-11 h-11
                         rounded-2xl
-                        bg-[#C8A96A]
-                        text-[#061F3E]
-                        flex items-center justify-center
-                      "
-                    >
-                      {item.icon}
-                    </div>
-
-                    <p className="mt-4 text-sm text-white/50">{item.title}</p>
-
-                    <h3
-                      className="
-                        mt-1
-                        text-sm
-                        font-medium
+                        bg-[#081B34]/40
+                        border border-white/10
+                        p-5
                         text-white
-                        leading-relaxed
+                        shadow-sm
+                        transition-all duration-300
+                        cursor-pointer block
                       "
                     >
-                      {item.value}
-                    </h3>
-                  </motion.div>
-                ))}
+                      <div
+                        className="
+                          w-9 h-9
+                          rounded-xl
+                          bg-cyan-400/10
+                          text-cyan-300
+                          flex items-center justify-center
+                        "
+                      >
+                        {item.icon}
+                      </div>
+
+                      <p className="mt-4 text-[11px] font-mono tracking-wider uppercase text-white/40">{item.title}</p>
+                      <h3 className="mt-1 text-xs sm:text-xs font-medium tracking-tight text-white leading-snug">
+                        {item.value}
+                      </h3>
+                    </motion.a>
+                  ) : (
+                    <motion.div
+                      key={index}
+                      whileHover={{ y: -6, borderColor: "rgba(34, 211, 238, 0.3)" }}
+                      className="
+                        rounded-2xl
+                        bg-[#081B34]/40
+                        border border-white/10
+                        p-5
+                        text-white
+                        shadow-sm
+                        transition-all duration-300
+                      "
+                    >
+                      <div
+                        className="
+                          w-9 h-9
+                          rounded-xl
+                          bg-cyan-400/10
+                          text-cyan-300
+                          flex items-center justify-center
+                        "
+                      >
+                        {item.icon}
+                      </div>
+
+                      <p className="mt-4 text-[11px] font-mono tracking-wider uppercase text-white/40">{item.title}</p>
+                      <h3 className="mt-1 text-xs sm:text-xs font-medium tracking-tight text-white leading-snug">
+                        {item.value}
+                      </h3>
+                    </motion.div>
+                  );
+                })}
               </div>
 
-              {/* Social */}
-              <div className="mt-10 flex items-center gap-4">
+              {/* Social Channels Link Row */}
+              <div className="mt-10 flex items-center gap-3">
                 {[
-                  <FaFacebookF size={15} />,
-                  <FaInstagram size={15} />,
-                  <FaLinkedinIn size={15} />,
-                ].map((icon, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{
-                      scale: 1.08,
-                      y: -4,
-                    }}
+                  { icon: <FaFacebookF size={14} />, href: "https://www.facebook.com/" },
+                  { icon: <FaInstagram size={14} />, href: "https://www.instagram.com/pixel_byte_solutions" },
+                  { icon: <FaLinkedinIn size={14} />, href: "https://www.linkedin.com/" },
+                  { icon: <FaWhatsapp size={14}/>, href: "https://wa.me/919061334391"}
+                ].map((item) => (
+                  <motion.a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05, y: -3 }}
                     className="
-                      w-12 h-12
-                      rounded-2xl
+                      w-10 h-10
+                      rounded-xl
                       border border-white/10
                       bg-white/5
                       text-white
                       flex items-center justify-center
                       cursor-pointer
-                      hover:bg-[#C8A96A]
-                      hover:text-[#061F3E]
+                      hover:bg-cyan-400
+                      hover:text-black
                       transition-all duration-300
+                      shadow-sm
                     "
                   >
-                    {icon}
-                  </motion.div>
+                    {item.icon}
+                  </motion.a>
                 ))}
               </div>
             </motion.div>
 
-            {/* FORM CARD */}
+            {/* INTERACTIVE INPUT FORM CARD (Cinematic Navy/Dark Card) */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -234,63 +228,35 @@ export default function ContactSection() {
               transition={{ duration: 0.8 }}
               className="
                 relative
-                rounded-[36px]
+                rounded-3xl
                 border border-white/10
-                bg-white
+                bg-[#081B34]/30
+                backdrop-blur-sm
                 p-8
                 sm:p-10
-                shadow-[0_20px_80px_rgba(0,0,0,0.25)]
+                shadow-2xl shadow-black/50
                 overflow-hidden
               "
             >
-              {/* Glow */}
-              <div
-                className="
-                  absolute
-                  top-0
-                  right-0
-                  w-[220px]
-                  h-[220px]
-                  bg-[#C8A96A]/20
-                  blur-[100px]
-                  rounded-full
-                "
-              />
+              {/* Internal decorative blend filter glow */}
+              <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-blue-500/10 blur-[80px] rounded-full pointer-events-none" />
 
               <div className="relative z-10">
-                {/* Heading */}
-                <h2
-                  className="
-                    text-3xl
-                    sm:text-4xl
-                    font-bold
-                    text-[#111827]
-                  "
-                >
+                <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
                   Start Your Project
                 </h2>
 
-                <p
-                  className="
-                    mt-3
-                    text-sm
-                    sm:text-base
-                    leading-relaxed
-                    text-[#111827]/60
-                  "
-                >
-                  Fill out the form below and our team will get back to you
-                  shortly.
+                <p className="mt-2 text-xs sm:text-sm font-light leading-relaxed text-white/60">
+                  Fill out the criteria below and our technical team will review your project specs shortly.
                 </p>
 
-                {/* FORM */}
+                {/* PROJECT DATA INPUT PROTOCOLS */}
                 <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-                  {/* Name */}
+                  {/* Name field */}
                   <div>
-                    <label className="text-sm font-medium text-[#111827]">
+                    <label className="text-xs font-semibold tracking-wider uppercase text-white/80">
                       Full Name
                     </label>
-
                     <input
                       type="text"
                       required
@@ -298,24 +264,27 @@ export default function ContactSection() {
                       className="
                         mt-2
                         w-full
-                        rounded-2xl
-                        border border-gray-200
-                        bg-[#FBF0E3]/40
-                        px-5 py-4
+                        text-sm
+                        font-light
+                        rounded-xl
+                        border border-white/10
+                        bg-black/40
+                        px-4 py-3.5
+                        text-white
+                        placeholder-white/30
                         outline-none
-                        focus:border-[#C8A96A]
-                        focus:bg-[#FBF0E3]/70
+                        focus:border-cyan-400
+                        focus:bg-black/60
                         transition-all
                       "
                     />
                   </div>
 
-                  {/* Email */}
+                  {/* Email field */}
                   <div>
-                    <label className="text-sm font-medium text-[#111827]">
+                    <label className="text-xs font-semibold tracking-wider uppercase text-white/80">
                       Email Address
                     </label>
-
                     <input
                       type="email"
                       required
@@ -323,97 +292,91 @@ export default function ContactSection() {
                       className="
                         mt-2
                         w-full
-                        rounded-2xl
-                        border border-gray-200
-                        bg-[#FBF0E3]/40
-                        px-5 py-4
+                        text-sm
+                        font-light
+                        rounded-xl
+                        border border-white/10
+                        bg-black/40
+                        px-4 py-3.5
+                        text-white
+                        placeholder-white/30
                         outline-none
-                        focus:border-[#C8A96A]
-                        focus:bg-[#FBF0E3]/70
+                        focus:border-cyan-400
+                        focus:bg-black/60
                         transition-all
                       "
                     />
                   </div>
 
-                  {/* Message */}
+                  {/* Message field */}
                   <div>
-                    <label className="text-sm font-medium text-[#111827]">
+                    <label className="text-xs font-semibold tracking-wider uppercase text-white/80">
                       Project Details
                     </label>
-
                     <textarea
                       required
-                      rows={5}
-                      placeholder="Tell us about your project..."
+                      rows={4}
+                      placeholder="Tell us about your architectural goals..."
                       className="
                         mt-2
                         w-full
-                        rounded-2xl
-                        border border-gray-200
-                        bg-[#FBF0E3]/40
-                        px-5 py-4
+                        text-sm
+                        font-light
+                        rounded-xl
+                        border border-white/10
+                        bg-black/40
+                        px-4 py-3.5
+                        text-white
+                        placeholder-white/30
                         outline-none
                         resize-none
-                        focus:border-[#C8A96A]
-                        focus:bg-[#FBF0E3]/70
+                        focus:border-cyan-400
+                        focus:bg-black/60
                         transition-all
                       "
                     />
                   </div>
 
-                  {/* Submit */}
+                  {/* Submittal Trigger button */}
                   <motion.button
-                    whileHover={{
-                      scale: 1.02,
-                    }}
-                    whileTap={{
-                      scale: 0.98,
-                    }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     disabled={loading}
                     className="
                       mt-4
                       w-full
-                      rounded-2xl
-                      bg-[#061F3E]
+                      rounded-xl
+                      bg-gradient-to-r from-[#2FA4FF] to-[#5B8CFF]
                       px-6 py-4
                       text-white
-                      font-medium
-                      flex items-center justify-center gap-3
-                      hover:bg-[#0B2C56]
+                      text-sm
+                      font-semibold
+                      flex items-center justify-center gap-2
+                      hover:opacity-90
                       transition-all duration-300
+                      shadow-md shadow-blue-500/10
                     "
                   >
                     {loading ? (
                       <>
                         <motion.div
-                          animate={{
-                            rotate: 360,
-                          }}
-                          transition={{
-                            repeat: Infinity,
-                            duration: 1,
-                            ease: "linear",
-                          }}
-                          className="
-                            w-5 h-5
-                            rounded-full
-                            border-2
-                            border-white
-                            border-t-transparent
-                          "
+                          animate={{ rotate: 360 }}
+                          transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                          className="w-4 h-4 rounded-full border-2 border-white border-t-transparent"
                         />
-                        Sending Message...
+                        Verifying Connection...
                       </>
                     ) : (
                       <>
-                        Send Message
-                        <ArrowUpRight size={18} />
+                        Send Specs
+                        <ArrowUpRight size={16} />
                       </>
                     )}
                   </motion.button>
                 </form>
               </div>
             </motion.div>
+            
           </div>
         </Container>
       </section>
