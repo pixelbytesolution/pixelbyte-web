@@ -1,11 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Google_Sans_Flex, Kanit, Rubik } from "next/font/google";
 import "./globals.css";
 import PageLoaderWrapper from "@/components/ui/PageLoaderWrapper";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const googleSansFlex = Google_Sans_Flex({
+  variable: "--font-google-sans-flex",
   subsets: ["latin"],
+  weight: "variable",
+  axes: ["opsz"],
+});
+
+const kanit = Kanit({
+  variable: "--font-kanit",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+});
+
+const rubik = Rubik({
+  variable: "--font-rubik",
+  subsets: ["latin"],
+  weight: "variable",
+  style: ["normal", "italic"],
 });
 
 const geistMono = Geist_Mono({
@@ -26,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${googleSansFlex.variable} ${kanit.variable} ${rubik.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <PageLoaderWrapper>{children}</PageLoaderWrapper>
