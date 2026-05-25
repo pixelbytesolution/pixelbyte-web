@@ -43,7 +43,7 @@ const textVariant = {
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-black">
+    <section className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-black pt-15">
       {/* Background with enhanced cinematic zoom and parallax */}
       <motion.div
         initial={{ scale: 1.25, opacity: 0 }}
@@ -215,12 +215,12 @@ export default function Hero() {
           <motion.div
             animate={{
               y: [0, 8, 0],
-              opacity: [0.4, 1, 0.4]
+              opacity: [0.4, 1, 0.4],
             }}
             transition={{
               duration: 2,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
             className="absolute -bottom-16 left-1/2 -translate-x-1/2 cursor-pointer flex flex-col items-center gap-1"
           >
