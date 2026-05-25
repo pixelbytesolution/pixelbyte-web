@@ -108,11 +108,11 @@ export default function Hero() {
                 className="relative overflow-hidden py-2"
               >
                 <motion.h1
-                  className="text-white font-black leading-[1.1] tracking-tighter
-                  text-[40px] sm:text-[56px] md:text-[76px] lg:text-[92px]
-                  bg-gradient-to-r from-white via-blue-200 to-cyan-300
-                  bg-clip-text text-transparent
-                  drop-shadow-2xl"
+                  className="text-white font-bold leading-[1.1] tracking-tighter
+                    text-[40px] sm:text-[56px] md:text-[76px] lg:text-[92px]
+                    bg-gradient-to-r from-white via-blue-200 to-cyan-300
+                    bg-clip-text text-transparent
+                    drop-shadow-2xl"
                   animate={{
                     backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                   }}
@@ -211,19 +211,33 @@ export default function Hero() {
             </motion.button>
           </motion.div>
 
-          {/* Scroll indicator */}
+          {/* Scroll indicator with Chevron Down Arrow */}
           <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2.5, repeat: Infinity }}
-            className="absolute -bottom-16 left-1/2 -translate-x-1/2"
+            animate={{
+              y: [0, 8, 0],
+              opacity: [0.4, 1, 0.4]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute -bottom-16 left-1/2 -translate-x-1/2 cursor-pointer flex flex-col items-center gap-1"
           >
-            <div className="w-6 h-10 border-2 border-white/40 rounded-full flex items-start justify-center p-2">
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-1 h-2 bg-white/60 rounded-full"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-6 h-6 text-white/70 hover:text-white transition-colors"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
               />
-            </div>
+            </svg>
           </motion.div>
         </motion.div>
       </Container>
