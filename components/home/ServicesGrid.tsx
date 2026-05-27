@@ -2,6 +2,7 @@
 
 import Container from "../ui/Container";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { WrenchIcon } from "lucide-react";
 
@@ -11,24 +12,28 @@ const services = [
     desc: "Strategic brand development and visual identity design",
     image: "/images/service1.jpg",
     tags: ["Brand Identity", "Strategy", "Design"],
+    href: "/services#consulting",
   },
   {
     title: "Web App Development",
     desc: "Strategic brand development and visual identity design",
     image: "/images/service2.jpg",
     tags: ["Frontend", "Backend", "API"],
+    href: "/services#web-development",
   },
   {
     title: "Digital Marketing",
     desc: "Strategic brand development and visual identity design",
     image: "/images/service3.jpg",
     tags: ["SEO", "Social Media", "Ads"],
+    href: "/services#consulting",
   },
   {
     title: "Mobile App Development",
     desc: "Strategic brand development and visual identity design",
     image: "/images/service4.jpg",
     tags: ["iOS", "Android", "Flutter"],
+    href: "/services#mobile-apps",
   },
 ];
 
@@ -101,7 +106,8 @@ export default function ServicesGrid() {
                 </div>
 
                 {/* CTA */}
-                <button
+                <Link
+                  href={item.href}
                   className="w-full flex items-center justify-between px-5 py-3 rounded-xl text-sm text-white 
                   bg-gradient-to-r from-[#0A2547] to-[#0D2F5A]
                   border border-white/10
@@ -110,7 +116,7 @@ export default function ServicesGrid() {
                 >
                   Explore Service
                   <span className="text-lg">→</span>
-                </button>
+                </Link>
               </div>
             </motion.div>
           ))}
