@@ -6,6 +6,12 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { InteractiveHoverButton } from "../ui/interactive-hover-button";
 
+const socialLinks = [
+  { icon: FaFacebookF, href: "https://www.facebook.com/" },
+  { icon: FaTwitter, href: "https://x.com/" },
+  { icon: FaLinkedinIn, href: "https://www.linkedin.com/" },
+];
+
 export default function Footer() {
   return (
     <footer className="w-full bg-[#F4EFE6] text-[#0A1F3C] pt-16 md:pt-20 pb-10">
@@ -16,7 +22,7 @@ export default function Footer() {
             Ready to Transform Your Business?
           </h2>
 
-          <InteractiveHoverButton> Get Started </InteractiveHoverButton>
+          <InteractiveHoverButton href="/contact">Get Started</InteractiveHoverButton>
         </div>
 
         {/* Divider */}
@@ -34,14 +40,18 @@ export default function Footer() {
 
             {/* Social Icons */}
             <div className="flex gap-3">
-              {[FaFacebookF, FaTwitter, FaLinkedinIn].map((Icon, i) => (
-                <div
-                  key={i}
+              {socialLinks.map(({ icon: Icon, href }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Pixelbyte social profile"
                   className="w-10 h-10 rounded-full bg-[#0A1F3C]/10 flex items-center justify-center 
                   hover:bg-[#0A1F3C] hover:text-white transition-all duration-300 cursor-pointer"
                 >
                   <Icon size={16} />
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -53,16 +63,16 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm text-[#0A1F3C]/70">
               <li>
-                <Link href="#">About Us</Link>
+                <Link href="/about">About Us</Link>
               </li>
               <li>
-                <Link href="#">Services</Link>
+                <Link href="/services">Services</Link>
               </li>
               <li>
-                <Link href="#">Projects</Link>
+                <Link href="/projects">Projects</Link>
               </li>
               <li>
-                <Link href="#">Careers</Link>
+                <Link href="/careers">Careers</Link>
               </li>
             </ul>
           </div>
@@ -74,16 +84,16 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm text-[#0A1F3C]/70">
               <li>
-                <Link href="#">Web Development</Link>
+                <Link href="/services#web-development">Web Development</Link>
               </li>
               <li>
-                <Link href="#">Mobile Apps</Link>
+                <Link href="/services#mobile-apps">Mobile Apps</Link>
               </li>
               <li>
-                <Link href="#">Cloud Solutions</Link>
+                <Link href="/services#cloud-solutions">Cloud Solutions</Link>
               </li>
               <li>
-                <Link href="#">Consulting</Link>
+                <Link href="/services#consulting">Consulting</Link>
               </li>
             </ul>
           </div>
@@ -94,23 +104,34 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="space-y-4 text-sm text-[#0A1F3C]/70">
-              <li className="flex items-start gap-3">
+              <li>
+                <Link
+                  href="https://share.google/WwODL6tEinUmWUo9w"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 hover:text-[#0A1F3C] transition-colors"
+                >
                 <MapPin size={18} />
                 <span>
                   HiLITE Business Park,
                   <br />
                   Kozhikode, Kerala, India
                 </span>
+                </Link>
               </li>
 
-              <li className="flex items-center gap-3">
-                <Phone size={18} />
-                <span>+91 98765 43210</span>
+              <li>
+                <Link href="tel:+919876543210" className="flex items-center gap-3 hover:text-[#0A1F3C] transition-colors">
+                  <Phone size={18} />
+                  <span>+91 98765 43210</span>
+                </Link>
               </li>
 
-              <li className="flex items-center gap-3">
-                <Mail size={18} />
-                <span>pixelbytesolution.in@gmail.com</span>
+              <li>
+                <Link href="mailto:pixelbytesolutions.in@gmail.com" className="flex items-center gap-3 hover:text-[#0A1F3C] transition-colors">
+                  <Mail size={18} />
+                  <span>pixelbytesolutions.in@gmail.com</span>
+                </Link>
               </li>
             </ul>
           </div>
@@ -121,8 +142,8 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} Pixelbyte. All rights reserved.</p>
 
           <div className="flex gap-6">
-            <Link href="#">Privacy Policy</Link>
-            <Link href="#">Terms of Service</Link>
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms of Service</Link>
           </div>
         </div>
       </Container>
