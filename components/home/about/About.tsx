@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Container from "../../ui/Container";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -46,7 +47,7 @@ const Counter = ({ end, duration = 2, suffix = "" }: CounterProps) => {
 
 export default function About() {
   return (
-    <section className="relative w-full bg-white overflow-hidden py-20 md:py-32 lg:py-40">
+    <section id="about" className="relative w-full bg-white overflow-hidden py-20 md:py-32 lg:py-40">
       <Container>
         <div className="space-y-24">
           {/* Top Section - Logo + Content */}
@@ -114,31 +115,35 @@ export default function About() {
               </p>
 
               {/* About Button */}
-              <motion.button
+              <motion.div
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.96 }}
-                className="inline-flex items-center gap-3 px-8 py-3 rounded-full
-                  border-2 border-[#1a1a1a] text-[#1a1a1a]
-                  hover:bg-[#1a1a1a] hover:text-white
-                  transition-all duration-300 font-medium text-base"
               >
-                <span>About us</span>
-                <motion.svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  animate={{ x: [0, 3, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-3 px-8 py-3 rounded-full
+                    border-2 border-[#1a1a1a] text-[#1a1a1a]
+                    hover:bg-[#1a1a1a] hover:text-white
+                    transition-all duration-300 font-medium text-base"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </motion.svg>
-              </motion.button>
+                  <span>About us</span>
+                  <motion.svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    animate={{ x: [0, 3, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </motion.svg>
+                </Link>
+              </motion.div>
             </motion.div>
           </motion.div>
 
