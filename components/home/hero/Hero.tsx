@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Container from "../../ui/Container";
 import { motion, cubicBezier } from "framer-motion";
 import AnimatedText from "../../ui/AnimatedText";
@@ -162,7 +163,7 @@ export default function Hero() {
 
           {/* Premium Button with enhanced interaction */}
           <motion.div variants={item} className="mt-14 flex justify-center">
-            <motion.button
+            <motion.div
               whileHover={{
                 scale: 1.12,
                 boxShadow:
@@ -174,41 +175,45 @@ export default function Hero() {
                 stiffness: 400,
                 damping: 25,
               }}
-              className="group relative px-12 py-5 rounded-xl text-white font-semibold text-[16px] overflow-hidden"
             >
-              {/* Animated gradient background */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[#2FA4FF] via-[#5B8CFF] to-[#2FA4FF] rounded-xl"
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                }}
-                style={{
-                  backgroundSize: "200% 200%",
-                }}
-              />
+              <Link
+                href="/contact"
+                className="group relative block px-12 py-5 rounded-xl text-white font-semibold text-[16px] overflow-hidden"
+              >
+                {/* Animated gradient background */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-[#2FA4FF] via-[#5B8CFF] to-[#2FA4FF] rounded-xl"
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                  }}
+                  style={{
+                    backgroundSize: "200% 200%",
+                  }}
+                />
 
-              {/* Shine effect on hover */}
-              <motion.div
-                className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white to-transparent"
-                animate={{
-                  x: ["-100%", "100%"],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                }}
-              />
+                {/* Shine effect on hover */}
+                <motion.div
+                  className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white to-transparent"
+                  animate={{
+                    x: ["-100%", "100%"],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                  }}
+                />
 
-              {/* Text */}
-              <motion.span className="relative z-10 block">
-                Get Started
-              </motion.span>
-            </motion.button>
+                {/* Text */}
+                <motion.span className="relative z-10 block">
+                  Get Started
+                </motion.span>
+              </Link>
+            </motion.div>
           </motion.div>
 
           {/* Scroll indicator with Chevron Down Arrow */}
@@ -222,22 +227,28 @@ export default function Hero() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="absolute -bottom-16 left-1/2 -translate-x-1/2 cursor-pointer flex flex-col items-center gap-1"
+            className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-6 h-6 text-white/70 hover:text-white transition-colors"
+            <Link
+              href="#about"
+              aria-label="Scroll to about section"
+              className="text-white/70 hover:text-white transition-colors"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+            </Link>
           </motion.div>
         </motion.div>
       </Container>
