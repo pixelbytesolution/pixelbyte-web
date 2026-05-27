@@ -1,6 +1,7 @@
 "use client";
 
 import Container from "../ui/Container";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const services = [
@@ -91,10 +92,10 @@ export default function ServicesSection() {
 
             {/* Button */}
             <div className="md:col-span-6 flex md:justify-end">
-              <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/40 text-white text-sm font-medium hover:bg-white hover:text-[#0A1F3C] transition-all duration-300">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/40 text-white text-sm font-medium hover:bg-white hover:text-[#0A1F3C] transition-all duration-300">
                 SCHEDULE A FREE CALL
                 <span className="text-lg">↗</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
