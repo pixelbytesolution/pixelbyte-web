@@ -10,6 +10,7 @@ import {
   FaLinkedinIn,
   FaWhatsapp,
 } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 export default function ContactSection() {
   const [loading, setLoading] = useState(false);
@@ -18,10 +19,79 @@ export default function ContactSection() {
     e.preventDefault();
     setLoading(true);
 
-    setTimeout(() => {
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const message = formData.get("message") as string;
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Success alert with SweetAlert2
+        Swal.fire({
+          icon: "success",
+          title: "🎉 Message Sent!",
+          text: "We'll get back to you soon.",
+          timer: 3000,
+          timerProgressBar: true,
+          showConfirmButton: true,
+          confirmButtonColor: "#2FA4FF",
+          confirmButtonText: "Awesome!",
+          background: "#0a0f1a",
+          color: "#ffffff",
+          backdrop: "rgba(0,0,0,0.8)",
+          customClass: {
+            popup: "rounded-2xl border border-white/10",
+            confirmButton: "px-6 py-2 rounded-xl font-semibold",
+          },
+        });
+        e.currentTarget.reset();
+      } else {
+        // Error alert with SweetAlert2
+        Swal.fire({
+          icon: "error",
+          title: "❌ Oops!",
+          text: data.error || "Failed to send message. Please try again.",
+          confirmButtonColor: "#FF6B6B",
+          confirmButtonText: "Try Again",
+          background: "#0a0f1a",
+          color: "#ffffff",
+          backdrop: "rgba(0,0,0,0.8)",
+          customClass: {
+            popup: "rounded-2xl border border-white/10",
+            confirmButton: "px-6 py-2 rounded-xl font-semibold",
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      // Network error alert with SweetAlert2
+      Swal.fire({
+        icon: "error",
+        title: "🌐 Network Error",
+        text: "Please check your internet connection and try again.",
+        confirmButtonColor: "#FF6B6B",
+        confirmButtonText: "Try Again",
+        background: "#0a0f1a",
+        color: "#ffffff",
+        backdrop: "rgba(0,0,0,0.8)",
+        customClass: {
+          popup: "rounded-2xl border border-white/10",
+          confirmButton: "px-6 py-2 rounded-xl font-semibold",
+        },
+      });
+    } finally {
       setLoading(false);
-      alert("Message Sent Successfully!");
-    }, 2000);
+    }
   };
 
   return (
@@ -294,6 +364,7 @@ export default function ContactSection() {
                     </label>
                     <input
                       type="text"
+                      name="name"
                       required
                       placeholder="John Doe"
                       className="
@@ -322,6 +393,7 @@ export default function ContactSection() {
                     </label>
                     <input
                       type="email"
+                      name="email"
                       required
                       placeholder="example@email.com"
                       className="
@@ -349,6 +421,7 @@ export default function ContactSection() {
                       Project Details
                     </label>
                     <textarea
+                      name="message"
                       required
                       rows={4}
                       placeholder="Tell us about your architectural goals..."
@@ -390,6 +463,8 @@ export default function ContactSection() {
                       hover:opacity-90
                       transition-all duration-300
                       shadow-md shadow-blue-500/10
+                      disabled:opacity-70
+                      disabled:cursor-not-allowed
                     "
                   >
                     {loading ? (
