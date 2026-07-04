@@ -4,7 +4,12 @@ import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import { ArrowUpRight, Mail, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 export default function ContactSection() {
   const [loading, setLoading] = useState(false);
@@ -21,7 +26,6 @@ export default function ContactSection() {
 
   return (
     <main className="w-full bg-black text-white overflow-hidden">
-      
       {/* MAIN CONTAINER SECTION */}
       <section className="relative py-24 sm:py-28 lg:py-32 overflow-hidden bg-gradient-to-b from-black via-[#040d1a] to-black">
         {/* Dynamic Inner Radial Blue Glows */}
@@ -41,7 +45,6 @@ export default function ContactSection() {
 
         <Container className="relative z-10">
           <div className="grid lg:grid-cols-[1fr_520px] gap-16 items-center">
-            
             {/* LEFT SIDE CONTENT BLOCK */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -91,7 +94,10 @@ export default function ContactSection() {
 
               {/* Subdescription text parameters */}
               <p className="mt-8 max-w-xl text-sm sm:text-base font-light leading-relaxed text-white/70">
-                Whether you&apos;re launching a startup, scaling an automation layer, or modernizing your data systems — PixelByte Solutions turns business operational goals into high-performance digital architecture.
+                Whether you&apos;re launching a startup, scaling an automation
+                layer, or modernizing your data systems — PixelByte Solutions
+                turns business operational goals into high-performance digital
+                architecture.
               </p>
 
               {/* Core Information Info Cards (Deep Blue Blocks) */}
@@ -113,16 +119,25 @@ export default function ContactSection() {
                     icon: <MapPin size={16} />,
                     title: "Location",
                     value: "HiLITE Business Park, Kozhikode, Kerala",
-                    link: "https://share.google/WwODL6tEinUmWUo9w"
+                    link: "https://share.google/WwODL6tEinUmWUo9w",
                   },
                 ].map((item, index) => {
                   return item.link ? (
                     <motion.a
-	                      key={index}
-	                      href={item.link}
-	                      target={item.link.startsWith("http") ? "_blank" : undefined}
-	                      rel={item.link.startsWith("http") ? "noopener noreferrer" : undefined}
-                      whileHover={{ y: -6, borderColor: "rgba(34, 211, 238, 0.3)" }}
+                      key={index}
+                      href={item.link}
+                      target={
+                        item.link.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        item.link.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      whileHover={{
+                        y: -6,
+                        borderColor: "rgba(34, 211, 238, 0.3)",
+                      }}
                       className="
                         rounded-2xl
                         bg-[#081B34]/40
@@ -146,7 +161,9 @@ export default function ContactSection() {
                         {item.icon}
                       </div>
 
-                      <p className="mt-4 text-[11px] font-mono tracking-wider uppercase text-white/40">{item.title}</p>
+                      <p className="mt-4 text-[11px] font-mono tracking-wider uppercase text-white/40">
+                        {item.title}
+                      </p>
                       <h3 className="mt-1 text-xs sm:text-xs font-medium tracking-tight text-white leading-snug">
                         {item.value}
                       </h3>
@@ -154,7 +171,10 @@ export default function ContactSection() {
                   ) : (
                     <motion.div
                       key={index}
-                      whileHover={{ y: -6, borderColor: "rgba(34, 211, 238, 0.3)" }}
+                      whileHover={{
+                        y: -6,
+                        borderColor: "rgba(34, 211, 238, 0.3)",
+                      }}
                       className="
                         rounded-2xl
                         bg-[#081B34]/40
@@ -177,7 +197,9 @@ export default function ContactSection() {
                         {item.icon}
                       </div>
 
-                      <p className="mt-4 text-[11px] font-mono tracking-wider uppercase text-white/40">{item.title}</p>
+                      <p className="mt-4 text-[11px] font-mono tracking-wider uppercase text-white/40">
+                        {item.title}
+                      </p>
                       <h3 className="mt-1 text-xs sm:text-xs font-medium tracking-tight text-white leading-snug">
                         {item.value}
                       </h3>
@@ -189,10 +211,22 @@ export default function ContactSection() {
               {/* Social Channels Link Row */}
               <div className="mt-10 flex items-center gap-3">
                 {[
-                  { icon: <FaFacebookF size={14} />, href: "https://www.facebook.com/" },
-                  { icon: <FaInstagram size={14} />, href: "https://www.instagram.com/pixel_byte_solutions" },
-                  { icon: <FaLinkedinIn size={14} />, href: "https://www.linkedin.com/" },
-                  { icon: <FaWhatsapp size={14}/>, href: "https://wa.me/919061334391"}
+                  {
+                    icon: <FaFacebookF size={14} />,
+                    href: "https://www.facebook.com/",
+                  },
+                  {
+                    icon: <FaInstagram size={14} />,
+                    href: "https://www.instagram.com/pixel_byte_solutions",
+                  },
+                  {
+                    icon: <FaLinkedinIn size={14} />,
+                    href: "https://www.linkedin.com/",
+                  },
+                  {
+                    icon: <FaWhatsapp size={14} />,
+                    href: "https://wa.me/919061334391",
+                  },
                 ].map((item) => (
                   <motion.a
                     key={item.href}
@@ -247,7 +281,8 @@ export default function ContactSection() {
                 </h2>
 
                 <p className="mt-2 text-xs sm:text-sm font-light leading-relaxed text-white/60">
-                  Fill out the criteria below and our technical team will review your project specs shortly.
+                  Fill out the criteria below and our technical team will review
+                  your project specs shortly.
                 </p>
 
                 {/* PROJECT DATA INPUT PROTOCOLS */}
@@ -361,7 +396,11 @@ export default function ContactSection() {
                       <>
                         <motion.div
                           animate={{ rotate: 360 }}
-                          transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                          transition={{
+                            repeat: Infinity,
+                            duration: 1,
+                            ease: "linear",
+                          }}
                           className="w-4 h-4 rounded-full border-2 border-white border-t-transparent"
                         />
                         Verifying Connection...
@@ -376,7 +415,6 @@ export default function ContactSection() {
                 </form>
               </div>
             </motion.div>
-            
           </div>
         </Container>
       </section>
