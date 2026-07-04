@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import { ArrowUpRight, Mail, Phone, MapPin } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 
 export default function ContactSection() {
   const [loading, setLoading] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,9 +36,9 @@ export default function ContactSection() {
 
       const data = await response.json();
 
-      if (response.ok) {
-        // Success alert with SweetAlert2
-        Swal.fire({
+      if (response.ok && data.success) {
+        // Success - Show success message
+        await Swal.fire({
           icon: "success",
           title: "🎉 Message Sent!",
           text: "We'll get back to you soon.",
@@ -54,10 +55,14 @@ export default function ContactSection() {
             confirmButton: "px-6 py-2 rounded-xl font-semibold",
           },
         });
-        e.currentTarget.reset();
+
+        // Reset form after success
+        if (formRef.current) {
+          formRef.current.reset();
+        }
       } else {
-        // Error alert with SweetAlert2
-        Swal.fire({
+        // Show error from API
+        await Swal.fire({
           icon: "error",
           title: "❌ Oops!",
           text: data.error || "Failed to send message. Please try again.",
@@ -74,8 +79,9 @@ export default function ContactSection() {
       }
     } catch (error) {
       console.error("Submission error:", error);
-      // Network error alert with SweetAlert2
-      Swal.fire({
+
+      // Show network error
+      await Swal.fire({
         icon: "error",
         title: "🌐 Network Error",
         text: "Please check your internet connection and try again.",
@@ -356,7 +362,11 @@ export default function ContactSection() {
                 </p>
 
                 {/* PROJECT DATA INPUT PROTOCOLS */}
-                <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+                <form
+                  ref={formRef}
+                  onSubmit={handleSubmit}
+                  className="mt-8 space-y-5"
+                >
                   {/* Name field */}
                   <div>
                     <label className="text-xs font-semibold tracking-wider uppercase text-white/80">
